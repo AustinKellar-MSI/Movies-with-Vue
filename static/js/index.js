@@ -13,11 +13,8 @@ var insertMovie = function() {
         rating: app.newMovieRating
     };
     $.post('/moviesWithVue/api/insert_movie/', newMovie, function(response) { 
-        if (response == 'movie inserted!') {
-            app.movies.push(newMovie);
-        } else {
-            alert('The new movie could not be inserted!');
-        }
+        newMovie.id = response.id;
+        app.movies.push(newMovie);
     });
 };
 
